@@ -87,19 +87,6 @@ What is still missing for me is the versatility of being able to just select a g
 
 | Support alternative recipes  | I can choose the most convenient or efficient crafting route  | Later  |
 
-
-**MVP (2–3 features):** *The skateboard: the smallest version I'd actually use.*
-- 
-- 
-
-**Later:**
-- 
-
-**Not doing:** *Things I'm deliberately leaving out.*
-- 
-
----
-
 ## 5. Tech Stack
 
 ### Front end
