@@ -103,25 +103,40 @@ What is still missing for me is the versatility of being able to just select a g
 ## 5. Tech Stack
 
 ### Front end
-- **Surface:** [CLI / Web / Mobile / Cross-platform / Chat]
-- **Tools:** [e.g., Next.js, Python, Expo]
-- **Why:** *How does this fit where and when I have the problem?*
+
+- **Surface:** A responsive web app for desktop and mobile browsers.
+- **Tools:** HTML and CSS for the interface, plus vanilla JavaScript for recipe search, price editing, and crafting calculations.
+- **Why:** A player can select a recipe, enter market prices, and see the estimated cost immediately while playing.
 
 ### Back end
+
 | Piece | Choice | Why |
 |---|---|---|
-| Server / API | | |
-| Data storage | | |
-| Outside services (optional) | | |
-| Hosting / deploy | | |
+| Server / API | Browser-side formula engine (`engine.js`) | Crafting costs are calculated on the player’s device. |
+| Data storage | `data.js` for recipes and formulas, `localStorage` for player edits | Recipes ship with the app, and prices and settings persist between visits in the same browser. |
+| Outside services | Google Fonts (optional) | Provides typography, with system fonts as a fallback. |
+| Hosting / deploy | Source on GitHub; runs locally by opening `index.html` | The app consists of static files and requires no build step. |
 
 ### Architecture sketch
 
 ```mermaid
 flowchart LR
-  U["Me"] --> FE["Front end: ..."]
-  FE --> API["Back end / API: ..."]
-  API --> DB[("Data: ...")]
+    Player["Player on desktop or phone"] <--> UI
+
+    subgraph Browser["Albion Crafter · Browser"]
+        UI["Interface<br/>index.html + style.css"]
+        App["App logic<br/>app.js"]
+        Engine["Crafting calculator<br/>engine.js"]
+        Catalog[("Recipe catalog<br/>data.js")]
+        Saved[("Player prices and settings<br/>localStorage")]
+
+        UI <-->|"Inputs and results"| App
+        App -->|"Calculate selected recipe"| Engine
+        Engine -->|"Estimated cost"| App
+        Catalog -->|"Recipes"| App
+        Catalog -->|"Formulas and base prices"| Engine
+        App <-->|"Save and restore edits"| Saved
+    end
 ```
 
 ---
