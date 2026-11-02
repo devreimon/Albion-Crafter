@@ -143,7 +143,7 @@ flowchart LR
 
 ## 6. Open Questions
 
-*What am I still unsure about? What do I need to figure out or test first?*
+I still need to figure out how to host this app online without having it on my machine.
 
 -
 
