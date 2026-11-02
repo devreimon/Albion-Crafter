@@ -1,15 +1,6 @@
 const DATA = {
   cells: {
     Intro: { A7: "Nendys Calculator                 " },
-    Instructions: {
-      A1: "                                                                           INSTRUCTIONS",
-      B17: "Step 1.\nMake a copy of the spreadsheet if you have not already done so. To do this, go to the top left of Google Sheets, click on File, and select \u201cMake a copy\u201d. This spreadsheet may receive updates in the future, so whenever a new version is released, you will need to make a new copy.",
-      B24: "Step 2.\nThis is a manual spreadsheet and it does not use any API. This is beneficial because all values are always up to date. Go to the \u201cMaterials\u201d sheet and enter all the values. This should take about five minutes.",
-      B31: "Step 3.\nAfter entering all material values, go to the category you want to craft. All crafting categories in the game are included, such as crafting, refining, food, and potions. If you are crafting artifact items, place them in the correct brackets within each category.",
-      B38: "Step 4.\nSelect the return rate you plan to use. Island has a zero return rate. City applies to any city. Bonus city applies to the city with a crafting bonus. Bonus days can be selected if they apply. If you select hideout, a new box will appear where you must manually enter the return rate, as it is very difficult to calculate automatically due to bonuses, crafting levels, and energy levels.",
-      B45: "Step 5.\nUse the results to make profit. This is one of the simplest calculators you will use.",
-      B52: "Additional Information.\nThis spreadsheet took months to build and develop. If you find any bugs or would like to give feedback, please contact me on Discord at https://discord.gg/5ek2Y6p9GY\n",
-    },
     Materials: {
       C1: "Materials",
       B9: "PLANKS",
