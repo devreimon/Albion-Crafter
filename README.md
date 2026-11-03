@@ -1,6 +1,6 @@
 # Crafting Calculator
 
-> One line: This is an app that helps do the math for certain crafting recipes in games without the need for me to use a calculator and paper in order to figure out the price and materials needed.
+> This is an app that helps do the math for certain crafting recipes in games without the need for me to use a calculator and paper in order to figure out the price and materials needed.
 
 **Author:** Reimon Musaj · **Course:** CMP 464/343 Product 1 · **Last updated:** [date]
 
