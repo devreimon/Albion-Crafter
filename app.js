@@ -23,13 +23,13 @@ const $ = (id) => document.getElementById(id),
     ),
   fmt = (x) => x.toLocaleString(undefined, { maximumFractionDigits: 2 }),
   pretty = (x) => x.replace(/([a-z])([A-Z])/g, "$1 $2");
-// Keep user edits in this browser; JSON export provides a portable backup.
+// Keep user edits in this browser.
 function persist() {
   try {
     localStorage.setItem("albion-inputs-v1", JSON.stringify(saved));
   } catch {
     $("message").textContent =
-      "Browser storage unavailable. Export your inputs to keep them.";
+      "Browser storage unavailable. Edits will last for this session.";
   }
 }
 function get(key) {
@@ -196,42 +196,6 @@ $("ench").onchange = () => {
 $("more").onclick = () => {
   limit += 50;
   renderList();
-};
-$("export").onclick = () => {
-  let a = document.createElement("a");
-  a.href = URL.createObjectURL(
-    new Blob([JSON.stringify(saved, null, 2)], { type: "application/json" }),
-  );
-  a.download = "albion-inputs.json";
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-};
-$("import").onchange = async (e) => {
-  try {
-    let data = JSON.parse(await e.target.files[0].text());
-    if (
-      !data ||
-      Array.isArray(data) ||
-      typeof data !== "object" ||
-      Object.entries(data).some(
-        ([k, v]) =>
-          !/^\w+![A-Z]+\d+(?:_(?:qty|sale))?$/.test(k) ||
-          !(
-            v === null ||
-            typeof v === "boolean" ||
-            (typeof v === "number" && Number.isFinite(v) && v >= 0)
-          ),
-      )
-    )
-      throw Error();
-    saved = data;
-    persist();
-    renderDetail();
-    $("message").textContent = "Inputs imported.";
-  } catch {
-    $("message").textContent =
-      "Could not import. Choose a valid exported inputs file.";
-  }
 };
 renderNav();
 renderList();
